@@ -1,0 +1,23 @@
+<mujoco model="Rope">
+    <statistic extent="2" meansize=".05"/>
+    <option timestep="0.002" solver="Newton" iterations="30" tolerance="1e-10" jacobian="dense" cone="pyramidal"/>
+    <size nconmax="100" njmax="300" nstack="50000"/>
+
+    <worldbody>
+        <geom name="ground" type="plane" size="0 0 1" pos="0 0 0" quat="1 0 0 0" condim="1"/>
+
+        <body mocap="true" pos="-.1 .05 0" zaxis=".5 0 1">
+            <geom type="capsule" size=".1 .1" group="1" condim="1"/>
+        </body>
+    </worldbody>
+
+    <worldbody>
+        <body name="B10" pos="0 0 1">
+            <freejoint/>
+            <composite type="rope" count="21 1 1" spacing="0.04" offset="0 0 2">
+                <joint kind="main" damping="0.005"/>
+                <geom type="capsule" size=".01 .015" rgba=".8 .2 .1 1"/>
+            </composite>
+        </body>
+    </worldbody>
+</mujoco>
